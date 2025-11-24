@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN"
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      prefix="
+        um: https://users.jyu.fi/~musislch/urban-mobility.owl#
+        ex: https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#
+        rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+        rdfs: http://www.w3.org/2000/01/rdf-schema#
+        xsd: http://www.w3.org/2001/XMLSchema#
+      ">
+<head>
+  <title>Urban Mobility – Individuals (RDFa)</title>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+</head>
+
+<body vocab="https://users.jyu.fi/~musislch/urban-mobility.owl#">
+
+  <h1>Urban Mobility – RDFa Individuals</h1>
+
+  <!-- Transit Network -->
+  <div about="ex:CityTransitNetwork" typeof="um:TransitNetwork">
+    <h2 property="rdfs:label">Jyväskylä City Transit Network</h2>
+    <p property="rdfs:comment">The primary public transit network for the city.</p>
+    <p><strong>Name:</strong> <span property="um:hasName">JYU Transit</span></p>
+  </div>
+
+  <hr />
+
+  <!-- Bike Dock A -->
+  <div about="ex:BikeDockA" typeof="um:BikeDock">
+    <h2 property="rdfs:label">Campus Bike Dock A</h2>
+    <p property="rdfs:comment">Docking station near the main campus library.</p>
+    <ul>
+      <li><strong>hasName:</strong> <span property="um:hasName">Dock A - Campus</span></li>
+      <li><strong>capacity:</strong> <span property="um:capacity" datatype="xsd:int">20</span></li>
+      <li><strong>builtYear:</strong> <span property="um:builtYear" datatype="xsd:gYear">2020</span></li>
+      <li><strong>latitude:</strong> <span property="um:latitude" datatype="xsd:decimal">62.2367</span></li>
+      <li><strong>longitude:</strong> <span property="um:longitude" datatype="xsd:decimal">25.732</span></li>
+      <li><strong>stationOfNetwork:</strong>
+        <a rel="um:stationOfNetwork" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#CityTransitNetwork">
+          CityTransitNetwork
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <!-- Harbour Tram Stop -->
+  <div about="ex:HarbourTramStop" typeof="um:TramStop">
+    <h2 property="rdfs:label">Harbour Tram Stop</h2>
+    <p property="rdfs:comment">Tram stop by the harbour promenade.</p>
+    <ul>
+      <li><strong>hasName:</strong> <span property="um:hasName">Harbour</span></li>
+      <li><strong>capacity:</strong> <span property="um:capacity" datatype="xsd:int">120</span></li>
+      <li><strong>builtYear:</strong> <span property="um:builtYear" datatype="xsd:gYear">2018</span></li>
+      <li><strong>latitude:</strong> <span property="um:latitude" datatype="xsd:decimal">62.2444</span></li>
+      <li><strong>longitude:</strong> <span property="um:longitude" datatype="xsd:decimal">25.7501</span></li>
+      <li><strong>stationOfNetwork:</strong>
+        <a rel="um:stationOfNetwork" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#CityTransitNetwork">
+          CityTransitNetwork
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <!-- Vapaudenkatu Bus Stop -->
+  <div about="ex:VapaudenkatuStop" typeof="um:BusStop">
+    <h2 property="rdfs:label">Vapaudenkatu Bus Stop</h2>
+    <p property="rdfs:comment">Central bus stop on Vapaudenkatu.</p>
+    <ul>
+      <li><strong>hasName:</strong> <span property="um:hasName">Vapaudenkatu</span></li>
+      <li><strong>capacity:</strong> <span property="um:capacity" datatype="xsd:int">80</span></li>
+      <li><strong>builtYear:</strong> <span property="um:builtYear" datatype="xsd:gYear">1995</span></li>
+      <li><strong>latitude:</strong> <span property="um:latitude" datatype="xsd:decimal">62.2412</span></li>
+      <li><strong>longitude:</strong> <span property="um:longitude" datatype="xsd:decimal">25.7459</span></li>
+      <li><strong>stationOfNetwork:</strong>
+        <a rel="um:stationOfNetwork" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#CityTransitNetwork">
+          CityTransitNetwork
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <!-- Passengers -->
+  <div about="ex:alice" typeof="um:AdultPassenger">
+    <h2 property="rdfs:label">Alice Niemi</h2>
+    <p property="rdfs:comment">Adult passenger; sometimes drives in rideshare trips.</p>
+    <p><strong>hasName:</strong> <span property="um:hasName">Alice Niemi</span></p>
+  </div>
+
+  <div about="ex:bob" typeof="um:SeniorPassenger">
+    <h2 property="rdfs:label">Bob Korhonen</h2>
+    <p property="rdfs:comment">Senior passenger; frequent bus rider.</p>
+    <p><strong>hasName:</strong> <span property="um:hasName">Bob Korhonen</span></p>
+  </div>
+
+  <hr />
+
+  <!-- Vehicles -->
+  <div about="ex:bus1" typeof="um:Bus">
+    <h2 property="rdfs:label">City Bus 1</h2>
+    <p property="rdfs:comment">Standard diesel bus operating downtown loop.</p>
+    <ul>
+      <li><strong>hasName:</strong> <span property="um:hasName">Bus 1</span></li>
+      <li><strong>capacity:</strong> <span property="um:capacity" datatype="xsd:int">60</span></li>
+      <li><strong>isElectric:</strong> <span property="um:isElectric" datatype="xsd:boolean">false</span></li>
+      <li><strong>maxSpeed:</strong> <span property="um:maxSpeed" datatype="xsd:int">90</span></li>
+    </ul>
+  </div>
+
+  <div about="ex:car1" typeof="um:Car">
+    <h2 property="rdfs:label">Shared Ride Car 1</h2>
+    <p property="rdfs:comment">Compact rideshare sedan.</p>
+    <ul>
+      <li><strong>hasName:</strong> <span property="um:hasName">Rideshare Car 1</span></li>
+      <li><strong>capacity:</strong> <span property="um:capacity" datatype="xsd:int">4</span></li>
+      <li><strong>isElectric:</strong> <span property="um:isElectric" datatype="xsd:boolean">false</span></li>
+      <li><strong>maxSpeed:</strong> <span property="um:maxSpeed" datatype="xsd:int">150</span></li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <!-- Trips -->
+  <div about="ex:trip_bus_morning" typeof="um:PublicTransitTrip">
+    <h2 property="rdfs:label">Morning Bus Trip T-08:05</h2>
+    <p property="rdfs:comment">Downtown loop from Vapaudenkatu to Harbour.</p>
+    <ul>
+      <li><strong>hasPassenger:</strong>
+        <a rel="um:hasPassenger" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#alice">Alice</a>,
+        <a rel="um:hasPassenger" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#bob">Bob</a>
+      </li>
+      <li><strong>servesStation:</strong>
+        <a rel="um:servesStation" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#VapaudenkatuStop">VapaudenkatuStop</a>,
+        <a rel="um:servesStation" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#HarbourTramStop">HarbourTramStop</a>
+      </li>
+      <li><strong>usesVehicle:</strong>
+        <a rel="um:usesVehicle" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#bus1">Bus 1</a>
+      </li>
+    </ul>
+  </div>
+
+  <div about="ex:trip_ride1" typeof="um:RideSharingTrip">
+    <h2 property="rdfs:label">Rideshare Trip R-09:30</h2>
+    <p property="rdfs:comment">Alice drives Bob from Campus Dock A to Harbour.</p>
+    <ul>
+      <li><strong>hasDriver:</strong>
+        <a rel="um:hasDriver" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#alice">Alice</a>
+      </li>
+      <li><strong>hasPassenger:</strong>
+        <a rel="um:hasPassenger" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#bob">Bob</a>
+      </li>
+      <li><strong>servesStation:</strong>
+        <a rel="um:servesStation" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#BikeDockA">BikeDockA</a>,
+        <a rel="um:servesStation" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#HarbourTramStop">HarbourTramStop</a>
+      </li>
+      <li><strong>usesVehicle:</strong>
+        <a rel="um:usesVehicle" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#car1">Car 1</a>
+      </li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <!-- Tickets -->
+  <div about="ex:ticket_adult_morning" typeof="um:AdultTicket">
+    <h2 property="rdfs:label">Adult Single Ticket (Morning)</h2>
+    <p property="rdfs:comment">
+      Adult ticket used by Alice on PublicTransitTrip ex:trip_bus_morning.
+    </p>
+    <ul>
+      <li><strong>fareAmount:</strong>
+        <span property="um:fareAmount" datatype="xsd:decimal">2.8</span>
+      </li>
+      <li><strong>eligibleFor:</strong>
+        <a rel="um:eligibleFor" href="https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#alice">Alice</a>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>

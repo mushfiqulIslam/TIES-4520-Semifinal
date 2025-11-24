@@ -1,0 +1,232 @@
+#Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///work/
+        
+#  Notation3 generation by
+#       notation3.py,v 1.200 2007/12/11 21:18:08 syosi Exp
+
+#   Base was: file:///work/
+     @prefix : <https://users.jyu.fi/~musislch/urban-mobility.owl#> .
+    @prefix ex: <https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#> .
+    @prefix log: <http://www.w3.org/2000/10/swap/log#> .
+    @prefix math: <http://www.w3.org/2000/10/swap/math#> .
+    @prefix owl: <http://www.w3.org/2002/07/owl#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    
+     @forAll <rule5.n3#c>,
+                <rule5.n3#c2>,
+                <rule5.n3#s> .
+    
+    ex:BikeDockA     a :BikeDock;
+         rdfs:comment "Docking station near the main campus library."@en;
+         rdfs:label "Campus Bike Dock A"@en;
+         :builtYear 2020;
+         :capacity 20;
+         :hasName "Dock A - Campus";
+         :latitude 62.2367;
+         :longitude 25.732;
+         :stationOfNetwork ex:CityTransitNetwork .
+    
+    ex:CityTransitNetwork     a :TransitNetwork;
+         rdfs:comment "The primary public transit network for the city."@en;
+         rdfs:label "Jyväskylä City Transit Network"@en;
+         :hasName "JYU Transit" .
+    
+    ex:HarbourTramStop     a :TramStop;
+         rdfs:comment "Tram stop by the harbour promenade."@en;
+         rdfs:label "Harbour Tram Stop"@en;
+         :builtYear 2018;
+         :capacity 120;
+         :hasName "Harbour";
+         :latitude 62.2444;
+         :longitude 25.7501;
+         :stationOfNetwork ex:CityTransitNetwork .
+    
+    ex:VapaudenkatuStop     a :BusStop;
+         rdfs:comment "Central bus stop on Vapaudenkatu."@en;
+         rdfs:label "Vapaudenkatu Bus Stop"@en;
+         :builtYear 1995;
+         :capacity 80;
+         :hasName "Vapaudenkatu";
+         :latitude 62.2412;
+         :longitude 25.7459;
+         :stationOfNetwork ex:CityTransitNetwork .
+    
+    ex:alice     a :AdultPassenger;
+         rdfs:comment "Adult passenger; sometimes drives in rideshare trips."@en;
+         rdfs:label "Alice Niemi"@en;
+         :hasName "Alice Niemi" .
+    
+    ex:bike1     a :ElectricBicycle;
+         rdfs:comment "Electric bicycle available at Dock A."@en;
+         rdfs:label "Campus E-Bike 1"@en;
+         :capacity 1;
+         :hasName "E-Bike #1";
+         :hasWheel ex:bike1_w1,
+                ex:bike1_w2;
+         :isElectric true;
+         :maxSpeed 25 .
+    
+    ex:bike1_w1     a :Wheel;
+         rdfs:label "Bike 1 - Front Wheel"@en .
+    
+    ex:bike1_w2     a :Wheel;
+         rdfs:label "Bike 1 - Rear Wheel"@en .
+    
+    ex:bob     a :SeniorPassenger;
+         rdfs:comment "Senior passenger; frequent bus rider."@en;
+         rdfs:label "Bob Korhonen"@en;
+         :hasName "Bob Korhonen" .
+    
+    ex:bus1     a :Bus;
+         rdfs:comment "Standard diesel bus operating downtown loop."@en;
+         rdfs:label "City Bus 1"@en;
+         :capacity 60;
+         :hasName "Bus 1";
+         :hasRegistration ex:reg_bus1;
+         :hasWheel ex:bus1_w1,
+                ex:bus1_w2,
+                ex:bus1_w3,
+                ex:bus1_w4;
+         :isElectric false;
+         :maxSpeed 90 .
+    
+    ex:bus1_w1     a :Wheel;
+         rdfs:label "Bus 1 - Wheel 1"@en .
+    
+    ex:bus1_w2     a :Wheel;
+         rdfs:label "Bus 1 - Wheel 2"@en .
+    
+    ex:bus1_w3     a :Wheel;
+         rdfs:label "Bus 1 - Wheel 3"@en .
+    
+    ex:bus1_w4     a :Wheel;
+         rdfs:label "Bus 1 - Wheel 4"@en .
+    
+    ex:car1     a :Car;
+         rdfs:comment "Compact rideshare sedan."@en;
+         rdfs:label "Shared Ride Car 1"@en;
+         :capacity 4;
+         :hasName "Rideshare Car 1";
+         :hasRegistration ex:reg_car1;
+         :hasWheel ex:car1_w1,
+                ex:car1_w2,
+                ex:car1_w3,
+                ex:car1_w4;
+         :isElectric false;
+         :maxSpeed 150 .
+    
+    ex:car1_w1     a :Wheel;
+         rdfs:label "Car 1 - Wheel 1"@en .
+    
+    ex:car1_w2     a :Wheel;
+         rdfs:label "Car 1 - Wheel 2"@en .
+    
+    ex:car1_w3     a :Wheel;
+         rdfs:label "Car 1 - Wheel 3"@en .
+    
+    ex:car1_w4     a :Wheel;
+         rdfs:label "Car 1 - Wheel 4"@en .
+    
+    ex:charlie     a :ChildPassenger;
+         rdfs:comment "Child passenger; travels with guardian."@en;
+         rdfs:label "Charlie Lahti"@en;
+         :hasName "Charlie Lahti" .
+    
+    ex:reg_bus1     a :VehicleRegistration;
+         rdfs:label "Registration - Bus 1"@en;
+         :hasName "FIN-BUS-101" .
+    
+    ex:reg_car1     a :VehicleRegistration;
+         rdfs:label "Registration - Car 1"@en;
+         :hasName "FIN-CAR-001" .
+    
+    ex:ticket_adult_morning     a :AdultTicket;
+         rdfs:comment "Adult ticket used by Alice on PublicTransitTrip ex:trip_bus_morning."@en;
+         rdfs:label "Adult Single Ticket (Morning)"@en;
+         :eligibleFor ex:alice;
+         :fareAmount 2.8 .
+    
+    ex:ticket_senior_morning     a :Ticket;
+         rdfs:comment "Senior ticket used by Bob on the morning bus trip."@en;
+         rdfs:label "Senior Single Ticket (Morning)"@en;
+         :eligibleFor ex:bob;
+         :fareAmount 1.8 .
+    
+    ex:trip_bus_morning     a :PublicTransitTrip;
+         rdfs:comment "Downtown loop from Vapaudenkatu to Harbour."@en;
+         rdfs:label "Morning Bus Trip T-08:05"@en;
+         :hasPassenger ex:alice,
+                ex:bob;
+         :servesStation ex:HarbourTramStop,
+                ex:VapaudenkatuStop;
+         :usesVehicle ex:bus1 .
+    
+    ex:trip_ride1     a :RideSharingTrip;
+         rdfs:comment "Alice drives Bob from Campus Dock A to Harbour."@en;
+         rdfs:label "Rideshare Trip R-09:30"@en;
+         :hasDriver ex:alice;
+         :hasPassenger ex:bob;
+         :servesStation ex:BikeDockA,
+                ex:HarbourTramStop;
+         :usesVehicle ex:car1 .
+    
+    <https://users.jyu.fi/~musislch/urban-mobility.owl>     a owl:Ontology .
+    
+    <https://users.jyu.fi/~musislch/urban-mobility.owleligibleFor>     a owl:ObjectProperty;
+         rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTicket>;
+         rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+    
+    <https://users.jyu.fi/~musislch/urban-mobility.owlhasDriver>     a owl:ObjectProperty;
+         rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlRideSharingTrip>;
+         rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+    
+    <https://users.jyu.fi/~musislch/urban-mobility.owlhasPassenger>     a owl:ObjectProperty;
+         rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTrip>;
+         rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+    
+    <https://users.jyu.fi/~musislch/urban-mobility.owlhasRegistration>     a owl:InverseFunctionalProperty,
+                owl:ObjectProperty;
+         rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle>;
+         rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlVehicleRegistration>;
+         owl:inverseOf <https://users.jyu.fi/~musislch/urban-mobility.owlregistrationOf> .
+    {
+        
+          ( <rule5.n3#c>
+            0 )
+             math:sum <rule5.n3#c2> .
+          ( <rule5.n3#c2>
+            20 )
+             math:greaterThanOrEqualTo true .
+        <rule5.n3#s>     a :BikeDock;
+             :capacity <rule5.n3#c> .
+        
+        }     log:implies {<rule5.n3#s>     a :HighCapacityStation .
+        } .
+    {
+        
+          ( <rule5.n3#c>
+            0 )
+             math:sum <rule5.n3#c2> .
+          ( <rule5.n3#c2>
+            20 )
+             math:greaterThanOrEqualTo true .
+        <rule5.n3#s>     a :BusStop;
+             :capacity <rule5.n3#c> .
+        
+        }     log:implies {<rule5.n3#s>     a :HighCapacityStation .
+        } .
+    {
+        
+          ( <rule5.n3#c>
+            0 )
+             math:sum <rule5.n3#c2> .
+          ( <rule5.n3#c2>
+            20 )
+             math:greaterThanOrEqualTo true .
+        <rule5.n3#s>     a :TramStop;
+             :capacity <rule5.n3#c> .
+        
+        }     log:implies {<rule5.n3#s>     a :HighCapacityStation .
+        } .
+    
+#ENDS

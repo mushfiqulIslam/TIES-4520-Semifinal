@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>jena-endpoint</servlet-name>
+        <servlet-class>endpoint.JenaEndpointServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>jena-endpoint</servlet-name>
+        <url-pattern>/jena-endpoint</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,16 @@
+@prefix :    <https://users.jyu.fi/~musislch/urban-mobility.owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+# passenger–passenger on same ride
+{ ?t a :RideSharingTrip; :hasPassenger ?p1, ?p2 .
+  ?p1 log:notEqualTo ?p2 .
+} => { ?p1 :rodeTogetherWith ?p2 } .
+
+# driver–passenger on rideshare
+{ ?t a :RideSharingTrip; :hasDriver ?d; :hasPassenger ?p . }
+=> { ?d :rodeTogetherWith ?p } .
+
+# make it symmetric
+{ ?a :rodeTogetherWith ?b } => { ?b :rodeTogetherWith ?a } .
+
+

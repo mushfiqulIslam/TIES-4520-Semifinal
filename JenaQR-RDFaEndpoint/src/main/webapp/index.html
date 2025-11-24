@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Jena RDFa Reasoning & SPARQL Endpoint</title>
+</head>
+<body>
+<h2>Jena RDFa → Reasoning → SPARQL Endpoint</h2>
+
+<form method="post" action="jena-endpoint">
+    <label>XHTML URL with RDFa:</label><br>
+    <input type="text" name="url" size="70"><br><br>
+
+    <label>Rules (Jena rules syntax):</label><br>
+    <textarea name="rules" rows="8" cols="70"></textarea><br><br>
+
+    <label>SPARQL query:</label><br>
+    <textarea name="sparql" rows="10" cols="70">SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 50</textarea><br><br>
+
+    <input type="submit" value="Run Query">
+</form>
+
+</body>
+</html>

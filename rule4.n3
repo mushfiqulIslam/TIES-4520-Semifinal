@@ -1,0 +1,10 @@
+@prefix :    <https://users.jyu.fi/~musislch/urban-mobility.owl#> .
+
+{ ?t a :PublicTransitTrip; :servesStation ?s .
+  ?s :stationOfNetwork ?net .
+} => { ?t :tripOfNetwork ?net } .
+
+{ ?t a :RideSharingTrip; :servesStation ?s .
+  ?s :stationOfNetwork ?net .
+} => { ?t :tripOfNetwork ?net } .
+

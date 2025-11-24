@@ -1,0 +1,149 @@
+@prefix : <https://users.jyu.fi/~musislch/urban-mobility.owl#> .
+@prefix ex: <https://users.jyu.fi/~musislch/urban-mobility-individuals.rdf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://users.jyu.fi/~musislch/urban-mobility-data.ttl> .
+
+# Transit network
+
+ex:CityTransitNetwork a :TransitNetwork ;
+  rdfs:label "Jyväskylä City Transit Network"@en ;
+  rdfs:comment "The primary public transit network for the city."@en ;
+  :hasName "JYU Transit" .
+
+# Stations
+
+ex:VapaudenkatuStop a :BusStop ;
+  rdfs:label "Vapaudenkatu Bus Stop"@en ;
+  rdfs:comment "Central bus stop on Vapaudenkatu."@en ;
+  :hasName "Vapaudenkatu" ;
+  :builtYear "1995"^^xsd:integer ;
+  :latitude  "62.2412"^^xsd:decimal ;
+  :longitude "25.7459"^^xsd:decimal ;
+  :capacity  "80"^^xsd:integer ;
+  :stationOfNetwork ex:CityTransitNetwork .
+
+ex:HarbourTramStop a :TramStop ;
+  rdfs:label "Harbour Tram Stop"@en ;
+  rdfs:comment "Tram stop by the harbour promenade."@en ;
+  :hasName "Harbour" ;
+  :builtYear "2018"^^xsd:integer ;
+  :latitude  "62.2444"^^xsd:decimal ;
+  :longitude "25.7501"^^xsd:decimal ;
+  :capacity  "120"^^xsd:integer ;
+  :stationOfNetwork ex:CityTransitNetwork .
+
+ex:BikeDockA a :BikeDock ;
+  rdfs:label "Campus Bike Dock A"@en ;
+  rdfs:comment "Docking station near the main campus library."@en ;
+  :hasName "Dock A - Campus" ;
+  :builtYear "2020"^^xsd:integer ;
+  :latitude  "62.2367"^^xsd:decimal ;
+  :longitude "25.7320"^^xsd:decimal ;
+  :capacity  "20"^^xsd:integer ;
+  :stationOfNetwork ex:CityTransitNetwork .
+
+# Wheels
+
+ex:car1_w1 a :Wheel ; rdfs:label "Car 1 - Wheel 1"@en .
+ex:car1_w2 a :Wheel ; rdfs:label "Car 1 - Wheel 2"@en .
+ex:car1_w3 a :Wheel ; rdfs:label "Car 1 - Wheel 3"@en .
+ex:car1_w4 a :Wheel ; rdfs:label "Car 1 - Wheel 4"@en .
+
+ex:bike1_w1 a :Wheel ; rdfs:label "Bike 1 - Front Wheel"@en .
+ex:bike1_w2 a :Wheel ; rdfs:label "Bike 1 - Rear Wheel"@en .
+
+ex:bus1_w1 a :Wheel ; rdfs:label "Bus 1 - Wheel 1"@en .
+ex:bus1_w2 a :Wheel ; rdfs:label "Bus 1 - Wheel 2"@en .
+ex:bus1_w3 a :Wheel ; rdfs:label "Bus 1 - Wheel 3"@en .
+ex:bus1_w4 a :Wheel ; rdfs:label "Bus 1 - Wheel 4"@en .
+
+# Vehicles + registrations
+
+ex:car1 a :Car ;
+  rdfs:label "Shared Ride Car 1"@en ;
+  rdfs:comment "Compact rideshare sedan."@en ;
+  :hasName "Rideshare Car 1" ;
+  :isElectric "false"^^xsd:boolean ;
+  :maxSpeed "150"^^xsd:integer ;
+  :capacity "4"^^xsd:integer ;
+  :hasWheel ex:car1_w1, ex:car1_w2, ex:car1_w3, ex:car1_w4 ;
+  :hasRegistration ex:reg_car1 .
+
+ex:reg_car1 a :VehicleRegistration ;
+  rdfs:label "Registration - Car 1"@en ;
+  :hasName "FIN-CAR-001" .
+
+ex:bus1 a :Bus ;
+  rdfs:label "City Bus 1"@en ;
+  rdfs:comment "Standard diesel bus operating downtown loop."@en ;
+  :hasName "Bus 1" ;
+  :isElectric "false"^^xsd:boolean ;
+  :maxSpeed "90"^^xsd:integer ;
+  :capacity "60"^^xsd:integer ;
+  :hasWheel ex:bus1_w1, ex:bus1_w2, ex:bus1_w3, ex:bus1_w4 ;
+  :hasRegistration ex:reg_bus1 .
+
+ex:reg_bus1 a :VehicleRegistration ;
+  rdfs:label "Registration - Bus 1"@en ;
+  :hasName "FIN-BUS-101" .
+
+# Electric bicycle (2 wheels, electric)
+ex:bike1 a :ElectricBicycle ;
+  rdfs:label "Campus E-Bike 1"@en ;
+  rdfs:comment "Electric bicycle available at Dock A."@en ;
+  :hasName "E-Bike #1" ;
+  :isElectric "true"^^xsd:boolean ;
+  :maxSpeed "25"^^xsd:integer ;
+  :capacity "1"^^xsd:integer ;
+  :hasWheel ex:bike1_w1, ex:bike1_w2 .
+
+# Passengers
+
+ex:alice a :AdultPassenger ;
+  rdfs:label "Alice Niemi"@en ;
+  rdfs:comment "Adult passenger; sometimes drives in rideshare trips."@en ;
+  :hasName "Alice Niemi" .
+
+ex:bob a :SeniorPassenger ;
+  rdfs:label "Bob Korhonen"@en ;
+  rdfs:comment "Senior passenger; frequent bus rider."@en ;
+  :hasName "Bob Korhonen" .
+
+ex:charlie a :ChildPassenger ;
+  rdfs:label "Charlie Lahti"@en ;
+  rdfs:comment "Child passenger; travels with guardian."@en ;
+  :hasName "Charlie Lahti" .
+
+# Tickets
+
+ex:ticket_adult_morning a :AdultTicket ;
+  rdfs:label "Adult Single Ticket (Morning)"@en ;
+  rdfs:comment "Adult ticket used by Alice on PublicTransitTrip ex:trip_bus_morning."@en ;
+  :fareAmount "2.80"^^xsd:decimal ;
+  :eligibleFor ex:alice .
+
+ex:ticket_senior_morning a :Ticket ;
+  rdfs:label "Senior Single Ticket (Morning)"@en ;
+  rdfs:comment "Senior ticket used by Bob on the morning bus trip."@en ;
+  :fareAmount "1.80"^^xsd:decimal ;
+  :eligibleFor ex:bob .
+
+# Trips
+
+# Public transit trip must serve at least one Station (per ontology)
+ex:trip_bus_morning a :PublicTransitTrip ;
+  rdfs:label "Morning Bus Trip T-08:05"@en ;
+  rdfs:comment "Downtown loop from Vapaudenkatu to Harbour."@en ;
+  :usesVehicle ex:bus1 ;
+  :hasPassenger ex:alice, ex:bob ;
+  :servesStation ex:VapaudenkatuStop, ex:HarbourTramStop .
+
+# Ride sharing trip must have exactly one driver who is a Passenger
+ex:trip_ride1 a :RideSharingTrip ;
+  rdfs:label "Rideshare Trip R-09:30"@en ;
+  rdfs:comment "Alice drives Bob from Campus Dock A to Harbour."@en ;
+  :usesVehicle ex:car1 ;
+  :hasDriver ex:alice ;
+  :hasPassenger ex:bob ;
+  :servesStation ex:BikeDockA, ex:HarbourTramStop .

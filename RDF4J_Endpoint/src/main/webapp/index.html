@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>RDF4J SPARQL Endpoint</title></head>
+<body>
+  <h1>RDF4J SPARQL Endpoint</h1>
+  <label>Repository URL</label><br>
+  <input id="repoUrl" size="60" value="http://localhost:8080/rdf4j-server"><br><br>
+  <label>Repository ID</label><br>
+  <input id="repoId" value="urban-mobility-individuals"><br><br>
+  <label>SPARQL Query</label><br>
+  <textarea id="q" rows="10" cols="80">SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 10</textarea><br><br>
+  <button onclick="run()">Run Query</button>
+  <pre id="out"></pre>
+<script>
+async function run(){
+  const params = new URLSearchParams();
+  params.append('repoUrl', document.getElementById('repoUrl').value);
+  params.append('repoId',  document.getElementById('repoId').value);
+  params.append('query',   document.getElementById('q').value);
+
+  const res = await fetch('api/query', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: params.toString()
+  });
+
+  const text = await res.text();
+  const output = document.getElementById('out');
+
+  // Try to parse JSON SELECT results
+  try {
+    const data = JSON.parse(text);
+    if (data.head && data.results) {
+      let html = "<table border='1' cellspacing='0' cellpadding='4'><tr>";
+      for (const v of data.head.vars) html += `<th>${v}</th>`;
+      html += "</tr>";
+      for (const row of data.results.bindings) {
+        html += "<tr>";
+        for (const v of data.head.vars) {
+          const cell = row[v]?.value || "";
+          html += `<td>${cell}</td>`;
+        }
+        html += "</tr>";
+      }
+      html += "</table>";
+      output.innerHTML = html;
+      return;
+    }
+  } catch(e) {}
+
+  output.textContent = text;
+}
+</script>
+</body></html>

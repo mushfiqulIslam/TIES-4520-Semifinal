@@ -1,0 +1,19 @@
+@prefix :     <https://users.jyu.fi/~musislch/urban-mobility.owl#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+{ ?s a :BusStop;  :capacity ?c .
+  ( ?c 0 ) math:sum ?c2 .
+  ( ?c2 20 ) math:greaterThanOrEqualTo true .
+} => { ?s a :HighCapacityStation } .
+
+{ ?s a :TramStop; :capacity ?c .
+  ( ?c 0 ) math:sum ?c2 .
+  ( ?c2 20 ) math:greaterThanOrEqualTo true .
+} => { ?s a :HighCapacityStation } .
+
+{ ?s a :BikeDock; :capacity ?c .
+  ( ?c 0 ) math:sum ?c2 .
+  ( ?c2 20 ) math:greaterThanOrEqualTo true .
+} => { ?s a :HighCapacityStation } .
+
+

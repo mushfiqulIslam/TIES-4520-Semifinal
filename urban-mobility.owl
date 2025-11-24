@@ -1,0 +1,379 @@
+@prefix : <https://users.jyu.fi/~musislch/urban-mobility> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://users.jyu.fi/~musislch/urban-mobility> .
+
+<https://users.jyu.fi/~musislch/urban-mobility.owl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owleligibleFor
+<https://users.jyu.fi/~musislch/urban-mobility.owleligibleFor> rdf:type owl:ObjectProperty ;
+                                                               rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTicket> ;
+                                                               rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasDriver
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasDriver> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlRideSharingTrip> ;
+                                                             rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasPassenger
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasPassenger> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTrip> ;
+                                                                rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasRegistration
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasRegistration> rdf:type owl:ObjectProperty ;
+                                                                   owl:inverseOf <https://users.jyu.fi/~musislch/urban-mobility.owlregistrationOf> ;
+                                                                   rdf:type owl:InverseFunctionalProperty ;
+                                                                   rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> ;
+                                                                   rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlVehicleRegistration> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasWheel
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasWheel> rdf:type owl:ObjectProperty ;
+                                                            rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> ;
+                                                            rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlWheel> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlregistrationOf
+<https://users.jyu.fi/~musislch/urban-mobility.owlregistrationOf> rdf:type owl:ObjectProperty ,
+                                                                           owl:FunctionalProperty ;
+                                                                  rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicleRegistration> ;
+                                                                  rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlservesStation
+<https://users.jyu.fi/~musislch/urban-mobility.owlservesStation> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTrip> ;
+                                                                 rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlStation> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlstationOfNetwork
+<https://users.jyu.fi/~musislch/urban-mobility.owlstationOfNetwork> rdf:type owl:ObjectProperty ,
+                                                                             owl:FunctionalProperty ;
+                                                                    rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlStation> ;
+                                                                    rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlTransitNetwork> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlusesVehicle
+<https://users.jyu.fi/~musislch/urban-mobility.owlusesVehicle> rdf:type owl:ObjectProperty ;
+                                                               rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTrip> ;
+                                                               rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlbuiltYear
+<https://users.jyu.fi/~musislch/urban-mobility.owlbuiltYear> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlStation> ;
+                                                             rdfs:range xsd:integer .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlcapacity
+<https://users.jyu.fi/~musislch/urban-mobility.owlcapacity> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> ;
+                                                            rdfs:range xsd:integer .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlfareAmount
+<https://users.jyu.fi/~musislch/urban-mobility.owlfareAmount> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTicket> ;
+                                                              rdfs:range xsd:decimal .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasName
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasName> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> ;
+                                                           rdfs:range xsd:string .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlisElectric
+<https://users.jyu.fi/~musislch/urban-mobility.owlisElectric> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> ;
+                                                              rdfs:range xsd:boolean .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owllatitude
+<https://users.jyu.fi/~musislch/urban-mobility.owllatitude> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlStation> ;
+                                                            rdfs:range xsd:decimal .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owllongitude
+<https://users.jyu.fi/~musislch/urban-mobility.owllongitude> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlStation> ;
+                                                             rdfs:range xsd:decimal .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlmaxSpeed
+<https://users.jyu.fi/~musislch/urban-mobility.owlmaxSpeed> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> ;
+                                                            rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlAdultPassenger
+<https://users.jyu.fi/~musislch/urban-mobility.owlAdultPassenger> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlAdultTicket
+<https://users.jyu.fi/~musislch/urban-mobility.owlAdultTicket> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ owl:intersectionOf ( <https://users.jyu.fi/~musislch/urban-mobility.owlTicket>
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <https://users.jyu.fi/~musislch/urban-mobility.owleligibleFor> ;
+                                                                                                            owl:allValuesFrom <https://users.jyu.fi/~musislch/urban-mobility.owlAdultPassenger>
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ] ;
+                                                               rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTicket> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlBicycle
+<https://users.jyu.fi/~musislch/urban-mobility.owlBicycle> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlNonMotorVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlBikeDock
+<https://users.jyu.fi/~musislch/urban-mobility.owlBikeDock> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlStation> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlBus
+<https://users.jyu.fi/~musislch/urban-mobility.owlBus> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlMotorVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlBusStop
+<https://users.jyu.fi/~musislch/urban-mobility.owlBusStop> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlStation> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlCar
+<https://users.jyu.fi/~musislch/urban-mobility.owlCar> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlMotorVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlChildPassenger
+<https://users.jyu.fi/~musislch/urban-mobility.owlChildPassenger> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlElectricBicycle
+<https://users.jyu.fi/~musislch/urban-mobility.owlElectricBicycle> rdf:type owl:Class ;
+                                                                   owl:equivalentClass [ owl:intersectionOf ( <https://users.jyu.fi/~musislch/urban-mobility.owlBicycle>
+                                                                                                              <https://users.jyu.fi/~musislch/urban-mobility.owlElectricVehicle>
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ] ;
+                                                                   rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlElectricVehicle
+<https://users.jyu.fi/~musislch/urban-mobility.owlElectricVehicle> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlFareType
+<https://users.jyu.fi/~musislch/urban-mobility.owlFareType> rdf:type owl:Class ;
+                                                            owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                  owl:oneOf ( <https://users.jyu.fi/~musislch/urban-mobility.owlSeniorFare>
+                                                                                              <https://users.jyu.fi/~musislch/urban-mobility.owlStandardFare>
+                                                                                              <https://users.jyu.fi/~musislch/urban-mobility.owlStudentFare>
+                                                                                            )
+                                                                                ] .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlMicromobilityVehicle
+<https://users.jyu.fi/~musislch/urban-mobility.owlMicromobilityVehicle> rdf:type owl:Class ;
+                                                                        owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                              owl:unionOf ( <https://users.jyu.fi/~musislch/urban-mobility.owlBicycle>
+                                                                                                            <https://users.jyu.fi/~musislch/urban-mobility.owlScooter>
+                                                                                                          )
+                                                                                            ] ;
+                                                                        rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlMotorVehicle
+<https://users.jyu.fi/~musislch/urban-mobility.owlMotorVehicle> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> ;
+                                                                owl:disjointWith <https://users.jyu.fi/~musislch/urban-mobility.owlNonMotorVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlNonMotorVehicle
+<https://users.jyu.fi/~musislch/urban-mobility.owlNonMotorVehicle> rdf:type owl:Class ;
+                                                                   owl:equivalentClass [ owl:intersectionOf ( <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle>
+                                                                                                              [ rdf:type owl:Class ;
+                                                                                                                owl:complementOf <https://users.jyu.fi/~musislch/urban-mobility.owlMotorVehicle>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ] ;
+                                                                   rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlPassenger
+<https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlPublicTransitTrip
+<https://users.jyu.fi/~musislch/urban-mobility.owlPublicTransitTrip> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTrip> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://users.jyu.fi/~musislch/urban-mobility.owlservesStation> ;
+                                                                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                       owl:onClass <https://users.jyu.fi/~musislch/urban-mobility.owlStation>
+                                                                                     ] .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlRideSharingTrip
+<https://users.jyu.fi/~musislch/urban-mobility.owlRideSharingTrip> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTrip> ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <https://users.jyu.fi/~musislch/urban-mobility.owlhasDriver> ;
+                                                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger>
+                                                                                   ] .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlScooter
+<https://users.jyu.fi/~musislch/urban-mobility.owlScooter> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlNonMotorVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlSeniorPassenger
+<https://users.jyu.fi/~musislch/urban-mobility.owlSeniorPassenger> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlStation
+<https://users.jyu.fi/~musislch/urban-mobility.owlStation> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTicket
+<https://users.jyu.fi/~musislch/urban-mobility.owlTicket> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTram
+<https://users.jyu.fi/~musislch/urban-mobility.owlTram> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlMotorVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTramStop
+<https://users.jyu.fi/~musislch/urban-mobility.owlTramStop> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlStation> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTransitNetwork
+<https://users.jyu.fi/~musislch/urban-mobility.owlTransitNetwork> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity
+<https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> rdf:type owl:Class .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTrip
+<https://users.jyu.fi/~musislch/urban-mobility.owlTrip> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlTwoWheeler
+<https://users.jyu.fi/~musislch/urban-mobility.owlTwoWheeler> rdf:type owl:Class ;
+                                                              owl:equivalentClass [ owl:intersectionOf ( <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle>
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <https://users.jyu.fi/~musislch/urban-mobility.owlhasWheel> ;
+                                                                                                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                                           owl:onClass <https://users.jyu.fi/~musislch/urban-mobility.owlWheel>
+                                                                                                         ]
+                                                                                                       ) ;
+                                                                                    rdf:type owl:Class
+                                                                                  ] ;
+                                                              rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlVehicle
+<https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> ,
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <https://users.jyu.fi/~musislch/urban-mobility.owlhasWheel> ;
+                                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                             owl:onClass <https://users.jyu.fi/~musislch/urban-mobility.owlWheel>
+                                                                           ] .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlVehicleRegistration
+<https://users.jyu.fi/~musislch/urban-mobility.owlVehicleRegistration> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlWheel
+<https://users.jyu.fi/~musislch/urban-mobility.owlWheel> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <https://users.jyu.fi/~musislch/urban-mobility.owlTransportationEntity> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlSeniorFare
+<https://users.jyu.fi/~musislch/urban-mobility.owlSeniorFare> rdf:type owl:NamedIndividual .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlStandardFare
+<https://users.jyu.fi/~musislch/urban-mobility.owlStandardFare> rdf:type owl:NamedIndividual .
+
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlStudentFare
+<https://users.jyu.fi/~musislch/urban-mobility.owlStudentFare> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://users.jyu.fi/~musislch/urban-mobility.owlAdultPassenger>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlChildPassenger>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlSeniorPassenger>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://users.jyu.fi/~musislch/urban-mobility.owlBikeDock>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlBusStop>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlTramStop>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlTicket>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlTransitNetwork>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlTrip>
+                <https://users.jyu.fi/~musislch/urban-mobility.owlWheel>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

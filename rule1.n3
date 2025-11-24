@@ -1,0 +1,16 @@
+@prefix :    <https://users.jyu.fi/~musislch/urban-mobility.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+# PublicTransitTrip
+{ ?t a :PublicTransitTrip; :servesStation ?s1, ?s2 .
+  ?s1 a ?C1 . ?s2 a ?C2 .
+  ?C1 log:notEqualTo ?C2 .
+} => { ?t a :MultiModalTrip } .
+
+# RideSharingTrip
+{ ?t a :RideSharingTrip; :servesStation ?s1, ?s2 .
+  ?s1 a ?C1 . ?s2 a ?C2 .
+  ?C1 log:notEqualTo ?C2 .
+} => { ?t a :MultiModalTrip } .
+

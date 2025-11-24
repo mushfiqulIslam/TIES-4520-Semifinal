@@ -1,0 +1,38 @@
+@prefix : <https://users.jyu.fi/~musislch/urban-mobility> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://users.jyu.fi/~musislch/urban-mobility.owl> .
+
+<https://users.jyu.fi/~musislch/urban-mobility.owl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owleligibleFor
+<https://users.jyu.fi/~musislch/urban-mobility.owleligibleFor> rdf:type owl:ObjectProperty ;
+    rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTicket> ;
+    rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasDriver
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasDriver> rdf:type owl:ObjectProperty ;
+    rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlRideSharingTrip> ;
+    rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasPassenger
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasPassenger> rdf:type owl:ObjectProperty ;
+    rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlTrip> ;
+    rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlPassenger> .
+
+###  https://users.jyu.fi/~musislch/urban-mobility.owlhasRegistration
+<https://users.jyu.fi/~musislch/urban-mobility.owlhasRegistration> rdf:type owl:ObjectProperty ;
+    owl:inverseOf <https://users.jyu.fi/~musislch/urban-mobility.owlregistrationOf> ;
+    rdf:type owl:InverseFunctionalProperty ;
+    rdfs:domain <https://users.jyu.fi/~musislch/urban-mobility.owlVehicle> ;
+    rdfs:range <https://users.jyu.fi/~musislch/urban-mobility.owlVehicleRegistration> .
+
+# … (the rest of your ontology remains exactly as in your original file)
+
